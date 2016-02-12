@@ -14,27 +14,22 @@
  * limitations under the License.
  */
 
-package com.borax12.materialdaterangepicker.date;
+package com.borax12.materialdaterangepicker.single.date;
 
 import android.content.Context;
-import android.util.AttributeSet;
 
 /**
- * A DayPickerView customized for {@link SimpleMonthAdapter}
+ * An adapter for a list of {@link SimpleMonthView} items.
  */
-public class SimpleDayPickerView extends DayPickerView {
+public class SimpleMonthAdapter extends MonthAdapter {
 
-    public SimpleDayPickerView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-    }
-
-    public SimpleDayPickerView(Context context, DatePickerController controller) {
+    public SimpleMonthAdapter(Context context, DatePickerController controller) {
         super(context, controller);
     }
 
     @Override
-    public MonthAdapter createMonthAdapter(Context context, DatePickerController controller) {
-        return new SimpleMonthAdapter(context, controller);
+    public MonthView createMonthView(Context context) {
+        final MonthView monthView = new SimpleMonthView(context, null, mController);
+        return monthView;
     }
-
 }

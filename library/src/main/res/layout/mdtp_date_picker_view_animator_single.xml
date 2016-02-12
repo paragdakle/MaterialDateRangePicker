@@ -13,12 +13,11 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.borax12.materialdaterangepicker.multi.date.TextViewWithCircularIndicator
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/month_text_view"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/mdtp_year_label_height"
-    android:layout_gravity="center"
-    android:gravity="center"
-    android:textColor="@color/mdtp_date_picker_year_selector"
-    android:textSize="@dimen/mdtp_year_label_text_size" />
+<com.borax12.materialdaterangepicker.single.date.AccessibleDateAnimator
+     xmlns:android="http://schemas.android.com/apk/res/android"
+     android:id="@+id/animator"
+     android:layout_width="@dimen/mdtp_date_picker_component_width"
+     android:layout_height="@dimen/mdtp_date_picker_view_animator_height"
+     android:gravity="center"
+     android:paddingLeft="8dp"
+     android:paddingRight="8dp" />

@@ -14,7 +14,7 @@
  * limitations under the License
  */
 
-package com.borax12.materialdaterangepicker.time;
+package com.borax12.materialdaterangepicker.multi.time;
 
 import android.animation.ObjectAnimator;
 import android.app.ActionBar.LayoutParams;
@@ -41,7 +41,7 @@ import com.borax12.materialdaterangepicker.HapticFeedbackController;
 import com.borax12.materialdaterangepicker.R;
 import com.borax12.materialdaterangepicker.TypefaceHelper;
 import com.borax12.materialdaterangepicker.Utils;
-import com.borax12.materialdaterangepicker.time.RadialPickerLayout.OnValueSelectedListener;
+import com.borax12.materialdaterangepicker.multi.time.RadialPickerLayout.OnValueSelectedListener;
 
 import java.text.DateFormatSymbols;
 import java.util.ArrayList;

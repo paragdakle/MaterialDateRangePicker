@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.borax12.materialdaterangepicker.time;
+package com.borax12.materialdaterangepicker.multi.time;
 
 import android.animation.Keyframe;
 import android.animation.ObjectAnimator;

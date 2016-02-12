@@ -11,11 +11,11 @@
     tools:context="com.wdullaer.materialdatetimepicker.MainActivity"
     android:gravity="center_vertical|center_horizontal">
 
-        <Button
-            android:id="@+id/date_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pick_date" />
+    <Button
+        android:id="@+id/date_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pick_date" />
 
     <Button
         android:id="@+id/time_button"
@@ -23,12 +23,24 @@
         android:layout_height="wrap_content"
         android:text="PICK TIME" />
 
+    <Button
+        android:id="@+id/date_button_multi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pick Date Range" />
+
+    <Button
+        android:id="@+id/time_button_multi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="PICK TIME RANGE" />
+
     <TextView
-            android:id="@+id/date_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/selected_date"
-            android:layout_marginTop="10dp" />
+        android:id="@+id/date_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/selected_date"
+        android:layout_marginTop="10dp" />
 
     <TextView
         android:id="@+id/time_textview"

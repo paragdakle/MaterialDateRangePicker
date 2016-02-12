@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.borax12.materialdaterangepicker.date;
+package com.borax12.materialdaterangepicker.single.date;
 
 import java.util.Calendar;
 
@@ -27,13 +27,15 @@ public interface DatePickerController {
 
     void onDayOfMonthSelected(int year, int month, int day);
 
-    void registerOnDateChangedListener(com.borax12.materialdaterangepicker.date.DatePickerDialog.OnDateChangedListener listener);
+    void registerOnDateChangedListener(DatePickerDialog.OnDateChangedListener listener);
 
-    void unregisterOnDateChangedListener(com.borax12.materialdaterangepicker.date.DatePickerDialog.OnDateChangedListener listener);
+    void unregisterOnDateChangedListener(DatePickerDialog.OnDateChangedListener listener);
 
-    com.borax12.materialdaterangepicker.date.MonthAdapter.CalendarDay getSelectedDay();
+    MonthAdapter.CalendarDay getSelectedDay();
 
     boolean isThemeDark();
+
+    int getAccentColor();
     
     Calendar[] getHighlightedDays();
 
@@ -45,9 +47,7 @@ public interface DatePickerController {
 
     int getMaxYear();
 
-    Calendar getMinDate();
-
-    Calendar getMaxDate();
+    boolean isOutOfRange(int year, int month, int day);
 
     void tryVibrate();
 }

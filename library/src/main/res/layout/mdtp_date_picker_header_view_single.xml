@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2013 The Android Open Source Project
+<!--
+     Copyright (C) 2013 The Android Open Source Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,12 +14,13 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-<com.borax12.materialdaterangepicker.multi.date.TextViewWithCircularIndicator
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/month_text_view"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/mdtp_year_label_height"
-    android:layout_gravity="center"
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/date_picker_header"
+    android:layout_width="@dimen/mdtp_date_picker_component_width"
+    android:layout_height="@dimen/mdtp_date_picker_header_height"
+    android:background="@color/mdtp_calendar_header"
     android:gravity="center"
-    android:textColor="@color/mdtp_date_picker_year_selector"
-    android:textSize="@dimen/mdtp_year_label_text_size" />
+    android:includeFontPadding="false"
+    android:textColor="@color/mdtp_white"
+    android:textSize="@dimen/mdtp_date_picker_header_text_size"
+    android:importantForAccessibility="no" />

@@ -8,14 +8,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.borax12.materialdaterangepicker.date.DatePickerDialog;
-import com.borax12.materialdaterangepicker.time.RadialPickerLayout;
-import com.borax12.materialdaterangepicker.time.TimePickerDialog;
+import com.borax12.materialdaterangepicker.single.date.DatePickerDialog;
+import com.borax12.materialdaterangepicker.single.time.RadialPickerLayout;
+import com.borax12.materialdaterangepicker.single.time.TimePickerDialog;
 
 import java.util.Calendar;
 
 public class MainActivity extends AppCompatActivity implements
-    DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener
+    DatePickerDialog.OnDateSetListener,TimePickerDialog.OnTimeSetListener, com.borax12.materialdaterangepicker.multi.date.DatePickerDialog.OnDateSetListener, com.borax12.materialdaterangepicker.multi.time.TimePickerDialog.OnTimeSetListener
 {
     private TextView dateTextView;
     private TextView timeTextView;
@@ -32,12 +32,15 @@ public class MainActivity extends AppCompatActivity implements
         Button dateButton = (Button)findViewById(R.id.date_button);
         Button timeButton = (Button)findViewById(R.id.time_button);
 
+        Button dateRangeButton = (Button)findViewById(R.id.date_button_multi);
+        Button timeRangeButton = (Button)findViewById(R.id.time_button_multi);
+
         // Show a datepicker when the dateButton is clicked
         dateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Calendar now = Calendar.getInstance();
-                DatePickerDialog dpd = com.borax12.materialdaterangepicker.date.DatePickerDialog.newInstance(
+                DatePickerDialog dpd = com.borax12.materialdaterangepicker.single.date.DatePickerDialog.newInstance(
                         MainActivity.this,
                         now.get(Calendar.YEAR),
                         now.get(Calendar.MONTH),
@@ -66,6 +69,40 @@ public class MainActivity extends AppCompatActivity implements
                 tpd.show(getFragmentManager(), "Timepickerdialog");
             }
         });
+
+        dateRangeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                com.borax12.materialdaterangepicker.multi.date.DatePickerDialog dpd = com.borax12.materialdaterangepicker.multi.date.DatePickerDialog.newInstance(
+                        MainActivity.this,
+                        now.get(Calendar.YEAR),
+                        now.get(Calendar.MONTH),
+                        now.get(Calendar.DAY_OF_MONTH)
+                );
+                dpd.show(getFragmentManager(), "Datepickerdialog");
+            }
+        });
+
+        timeRangeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Calendar now = Calendar.getInstance();
+                com.borax12.materialdaterangepicker.multi.time.TimePickerDialog tpd = com.borax12.materialdaterangepicker.multi.time.TimePickerDialog.newInstance(
+                        MainActivity.this,
+                        now.get(Calendar.HOUR_OF_DAY),
+                        now.get(Calendar.MINUTE),
+                        false
+                );
+                tpd.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                    @Override
+                    public void onCancel(DialogInterface dialogInterface) {
+                        Log.d("TimePicker", "Dialog was cancelled");
+                    }
+                });
+                tpd.show(getFragmentManager(), "Timepickerdialog");
+            }
+        });
     }
 
     @Override
@@ -75,15 +112,29 @@ public class MainActivity extends AppCompatActivity implements
         if(dpd != null) dpd.setOnDateSetListener(this);
     }
 
+    @Override
+    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+        String date = "You picked the following date: From- "+dayOfMonth+"/"+(++monthOfYear)+"/"+year;
+        dateTextView.setText(date);
+    }
 
     @Override
-    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth,int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
+    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int second) {
+        String hourString = hourOfDay < 10 ? "0"+hourOfDay : ""+hourOfDay;
+        String minuteString = minute < 10 ? "0"+minute : ""+minute;
+        String time = "You picked the following time: From - "+hourString+"h"+minuteString;
+        timeTextView.setText(time);
+
+    }
+
+    @Override
+    public void onDateSet(com.borax12.materialdaterangepicker.multi.date.DatePickerDialog view, int year, int monthOfYear, int dayOfMonth, int yearEnd, int monthOfYearEnd, int dayOfMonthEnd) {
         String date = "You picked the following date: From- "+dayOfMonth+"/"+(++monthOfYear)+"/"+year+" To "+dayOfMonthEnd+"/"+(++monthOfYearEnd)+"/"+yearEnd;
         dateTextView.setText(date);
     }
 
     @Override
-    public void onTimeSet(RadialPickerLayout view, int hourOfDay, int minute, int hourOfDayEnd, int minuteEnd) {
+    public void onTimeSet(com.borax12.materialdaterangepicker.multi.time.RadialPickerLayout view, int hourOfDay, int minute, int hourOfDayEnd, int minuteEnd) {
         String hourString = hourOfDay < 10 ? "0"+hourOfDay : ""+hourOfDay;
         String minuteString = minute < 10 ? "0"+minute : ""+minute;
         String hourStringEnd = hourOfDayEnd < 10 ? "0"+hourOfDayEnd : ""+hourOfDayEnd;

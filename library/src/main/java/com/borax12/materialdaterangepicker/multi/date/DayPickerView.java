@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.borax12.materialdaterangepicker.date;
+package com.borax12.materialdaterangepicker.multi.date;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -33,7 +33,7 @@ import android.widget.AbsListView.OnScrollListener;
 import android.widget.ListView;
 
 import com.borax12.materialdaterangepicker.Utils;
-import com.borax12.materialdaterangepicker.date.DatePickerDialog.OnDateChangedListener;
+import com.borax12.materialdaterangepicker.multi.date.DatePickerDialog.OnDateChangedListener;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
